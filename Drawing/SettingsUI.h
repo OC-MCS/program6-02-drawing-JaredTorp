@@ -143,6 +143,7 @@ public:
 		//what im trying to do here is the determine which button was pushed, and then fill and draw the shape that was pushed
 		//i need to remember that only one button can be pushed at a time
 		//maybe also have to update the current color and the current shape? I need to look into that
+		//also Im having trouble with my plan of action
 		//Please get help, and try to stay positive
 		
 		//if the blue button is pressed
