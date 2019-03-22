@@ -11,21 +11,49 @@ enum ShapeEnum { CIRCLE, SQUARE };
 class SettingsMgr
 {
 private:
-	
+	Color currentColor;
+	ShapeEnum currentShape;
+
 public:
-	SettingsMgr(Color startingColor, ShapeEnum startingShape )
+	//default consturctor, do we need one is the main is passing a color?
+	SettingsMgr()
 	{
+		//come back later
+	}
+
+	SettingsMgr(Color startingColor, ShapeEnum startingShape)
+	{
+		currentColor = startingColor; //sets the current to the starting color
+		currentShape = startingShape;
 	}
 
 	Color getCurColor()
 	{
-		return Color::Blue; // just to make it compile 
+		return currentColor; // returns the current color
 	}
 
 
 	ShapeEnum getCurShape()
 	{
-		return ShapeEnum::CIRCLE; // just to make it compile;
+		return currentShape; // returns the shape 
 	}
+
+	
+	//loading the setting from a binary file, or do we do this in main?
+	void loadsettings()
+	{
+
+
+	}
+
+
+	//saving the settings into the binary file
+	void saveSettings()
+	{
+
+	}
+
+
+
 
 };

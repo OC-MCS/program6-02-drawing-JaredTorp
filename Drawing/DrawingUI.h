@@ -18,6 +18,7 @@ public:
 
 	void draw(RenderWindow& win, ShapeMgr *mgr)
 	{
+
 	}
 	
 	bool isMouseInCanvas(Vector2f mousePos)

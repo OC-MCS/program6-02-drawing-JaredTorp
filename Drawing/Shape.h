@@ -10,9 +10,44 @@ using namespace sf;
 // for Circle and Square
 class DrawingShape 
 {
+private:
+
+public:
+	
+	//two polymorphic functions
+	//two pure virtual functions
+	
+	//virtual draw
+	//virtual RecordData
+
+	//draw and save function
+
+
 };
 
 // add Circle, Square classes below. These are derived from DrawingShape
+//remember they are derived
 
+class Circle : public DrawingShape
+{
+
+private:
+	CircleShape circle;
+
+public:
+
+
+};
+
+class Square : public DrawingShape
+{
+
+private:
+	RectangleShape square;
+
+public:
+
+
+};
 
 

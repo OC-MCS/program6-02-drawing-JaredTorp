@@ -11,7 +11,8 @@ using namespace sf;
 class ShapeMgr
 {
 private:
-	
+	//need a vector in the private data
+
 public:
 	ShapeMgr()
 	{
@@ -22,5 +23,5 @@ public:
 	{
 
 	}
-
+	
 };
