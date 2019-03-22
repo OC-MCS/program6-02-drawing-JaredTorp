@@ -10,6 +10,7 @@ using namespace sf;
 //consts for the circles and squares
 const int RADIUS = 20; //const radius for the circle buttons
 
+//global objects??? im not sure this is the write way to do it
 CircleShape blueBtn;
 CircleShape redBtn;
 CircleShape greenBtn;
@@ -26,8 +27,12 @@ private:
 public:
 	SettingsUI(SettingsMgr *mgr)
 	{
-		//i think this will take in the defaults and set to fill them?
-		//mostly works with the binary file?
+		//draw the default positions
+		//check the default buttons
+
+
+
+
 		
 	}
 
@@ -60,8 +65,11 @@ public:
 		blueBtn.setOutlineThickness(2);
 		blueBtn.setOutlineColor(Color::Blue);
 		
+
+	
 		//just for the outlined button
 		blueBtn.setFillColor(Color::Transparent);
+
 
 		win.draw(blueBtn);
 
@@ -132,7 +140,10 @@ public:
 	void handleMouseUp(Vector2f mouse)
 	{
 		//handle the mouse clicks
-
+		//what im trying to do here is the determine which button was pushed, and then fill and draw the shape that was pushed
+		//i need to remember that only one button can be pushed at a time
+		//maybe also have to update the current color and the current shape? I need to look into that
+		//Please get help, and try to stay positive
 		
 		//if the blue button is pressed
 		if (blueBtn.getGlobalBounds().contains(mouse)) //mouse is a Vector2f
@@ -165,7 +176,6 @@ public:
 		if (blueBtn.getGlobalBounds().contains(mouse))
 		{
 			squareBtn.setFillColor(Color::White);
-
 		}
 
 	}
