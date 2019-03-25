@@ -44,6 +44,11 @@ public:
 		win.draw(settingsOutline);
 
 
+		for (int i = 0; i < mgr->getVector().size(); i++)
+		{
+			mgr->getVector()[i]->draw(win); //Hey the vector is not working
+		}
+
 	}
 	
 	bool isMouseInCanvas(Vector2f mousePos)

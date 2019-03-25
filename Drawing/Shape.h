@@ -17,7 +17,8 @@ public:
 	//two polymorphic functions
 	//two pure virtual functions
 	
-	virtual void draw() = 0;
+
+	virtual void draw(RenderWindow&) = 0;
 	
 	
 	//virtual RecordData
@@ -43,7 +44,7 @@ public:
 		circle.setPosition(pos);
 		circle.setRadius(10); //setting the brush radius ourselves
 	}
-	void draw()
+	void draw(RenderWindow& win)
 	{
 		win.draw(circle); //one liner that draws the circle
 	}
@@ -66,6 +67,10 @@ public:
 		square.setSize(size); //setting the size of the brush
 	}
 
+	void draw(RenderWindow& win)
+	{
+		win.draw(square); //one liner that draws the circle
+	}
 	//RecordData
 
 };

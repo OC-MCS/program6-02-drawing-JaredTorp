@@ -24,13 +24,28 @@ public:
 		//adds a shape to the vector of pointers
 		//is the color and the whichshape sent to the constructor of Drawingshape as "nessessary information?"
 		//DrawingUI will draw this, this is just sending the info to the shapes
+
+		if (whichShape == ShapeEnum::CIRCLE)
+		{
+			Circle temp(pos, color); //initializing the values of a circle
+			vec.push_back(&temp); //pushing back the vector, using the address of temp
+		}
+		else //its a square
+		{
+			Square temp(pos, color); //initialize the values to a square
+			vec.push_back(&temp); //pushing back the vector, using the address of temp
+		}
+
+
+		
+
 	}
 	
 	
 	//function that returns a const referecnce/ptr to its list of shapes, so that DrawingUI can access the list of shapes to draw them
-	 DrawingShape* getVector() 
+	vector <DrawingShape*> getVector() 
 	{
-		/*return vec;*/ //Ask how to fix this lol
+		return vec; 
 	}
 	//function that returns a const referecnce/ptr to its list of shapes, so that DrawingUI can access the list of shapes to draw them
 	
