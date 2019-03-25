@@ -17,7 +17,9 @@ public:
 	//two polymorphic functions
 	//two pure virtual functions
 	
-	//virtual draw
+	virtual void draw() = 0;
+	
+	
 	//virtual RecordData
 
 	//draw and save function
@@ -35,8 +37,17 @@ private:
 	CircleShape circle;
 
 public:
-
-
+	Circle(Vector2f pos, Color color)
+	{
+		circle.setFillColor(color);
+		circle.setPosition(pos);
+		circle.setRadius(10); //setting the brush radius ourselves
+	}
+	void draw()
+	{
+		win.draw(circle); //one liner that draws the circle
+	}
+	
 };
 
 class Square : public DrawingShape
@@ -46,7 +57,16 @@ private:
 	RectangleShape square;
 
 public:
+	Square(Vector2f pos, Color color)
+	{
+		Vector2f size(10, 10); //setting the brush size
 
+		square.setFillColor(color);
+		square.setPosition(pos);
+		square.setSize(size); //setting the size of the brush
+	}
+
+	//RecordData
 
 };
 

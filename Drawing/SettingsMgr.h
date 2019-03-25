@@ -38,6 +38,18 @@ public:
 		return currentShape; // returns the shape 
 	}
 
+
+	void setCurColor(Color otherColor)
+	{
+		currentColor = otherColor;
+	}
+	
+	void setCurShape(ShapeEnum shape)
+	{
+		currentShape = shape;
+	}
+
+
 	
 	//loading the setting from a binary file, or do we do this in main?
 	void loadsettings()

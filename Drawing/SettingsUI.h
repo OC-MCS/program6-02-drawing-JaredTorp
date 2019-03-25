@@ -24,15 +24,22 @@ private:
 		CircleShape greenBtn;
 		CircleShape circleBtn;
 		RectangleShape squareBtn;
+		SettingsMgr* mgrPtr; //settings manager pointer
 
 public:
 	SettingsUI(SettingsMgr *mgr)
 	{
+		mgrPtr = mgr;
+		
 		//draw the default positions
 		//check the default buttons
-
-
-
+		
+		//set all buttons to transparent in the constructor
+		blueBtn.setFillColor(Color::Transparent);
+		redBtn.setFillColor(Color::Transparent);
+		greenBtn.setFillColor(Color::Transparent);
+		circleBtn.setFillColor(Color::Transparent);
+		squareBtn.setFillColor(Color::Transparent);
 
 		
 	}
@@ -41,6 +48,7 @@ public:
 	//function for drawing the menu
 	void draw(RenderWindow& win)
 	{
+
 		//draw the title of the settings
 		//load the font
 		Font font;
@@ -66,10 +74,18 @@ public:
 		blueBtn.setOutlineThickness(2);
 		blueBtn.setOutlineColor(Color::Blue);
 		
+		if (mgrPtr->getCurColor() == Color::Blue)
+		{
+			blueBtn.setFillColor(Color::Blue);
+		}
+		else
+		{
+			blueBtn.setFillColor(Color::Transparent);
+		}
 
 	
 		//just for the outlined button
-		blueBtn.setFillColor(Color::Transparent);
+		
 
 
 		win.draw(blueBtn);
@@ -84,7 +100,14 @@ public:
 		redBtn.setOutlineColor(Color::Red);
 
 		//just for the outlined button
-		redBtn.setFillColor(Color::Transparent);
+		if (mgrPtr->getCurColor() == Color::Red)
+		{
+			redBtn.setFillColor(Color::Red);
+		}
+		else
+		{
+			redBtn.setFillColor(Color::Transparent);
+		}
 
 		win.draw(redBtn);
 
@@ -98,7 +121,14 @@ public:
 		greenBtn.setOutlineColor(Color::Green);
 
 		//just for the outlined button
-		greenBtn.setFillColor(Color::Transparent);
+		if (mgrPtr->getCurColor() == Color::Green)
+		{
+			greenBtn.setFillColor(Color::Green);
+		}
+		else
+		{
+			greenBtn.setFillColor(Color::Transparent);
+		}
 
 		win.draw(greenBtn);
 
@@ -120,7 +150,14 @@ public:
 		circleBtn.setOutlineColor(Color::White);
 
 		//just for the outlined button
-		circleBtn.setFillColor(Color::Transparent);
+		if (mgrPtr->getCurShape() == ShapeEnum::CIRCLE)
+		{
+			circleBtn.setFillColor(Color::White);
+		}
+		else
+		{
+			circleBtn.setFillColor(Color::Transparent);
+		}
 
 		win.draw(circleBtn);
 
@@ -131,7 +168,15 @@ public:
 		squareBtn.setOutlineColor(Color::White);
 		squareBtn.setOutlineThickness(2);
 		squareBtn.setSize(Vector2f(40, 40));
-		squareBtn.setFillColor(Color::Transparent);
+		
+		if (mgrPtr->getCurShape() == ShapeEnum::SQUARE)
+		{
+			squareBtn.setFillColor(Color::White);
+		}
+		else
+		{
+			squareBtn.setFillColor(Color::Transparent);
+		}
 
 		win.draw(squareBtn);
 
@@ -143,41 +188,47 @@ public:
 		//handle the mouse clicks
 		//what im trying to do here is the determine which button was pushed, and then fill and draw the shape that was pushed
 		//i need to remember that only one button can be pushed at a time
-		//maybe also have to update the current color and the current shape? I need to look into that
-		//also Im having trouble with my plan of action
-		//Please get help, and try to stay positive
+		
+
+		
 		
 		//if the blue button is pressed
 		if (blueBtn.getGlobalBounds().contains(mouse)) //mouse is a Vector2f
 		{
-			blueBtn.setFillColor(Color::Blue);
+	
 			
-			//testing to see if this works, probably not right but oh well
+			mgrPtr->setCurColor(Color::Blue); //setting current color in settingsmgr
+
+			//want to set the fill color, draw it
+			//draw the other button as transparent
+			
 
 
 		}
+
 		//if the red button is pressed
 		if (redBtn.getGlobalBounds().contains(mouse)) 
 		{
-			redBtn.setFillColor(Color::Red);
+			mgrPtr->setCurColor(Color::Red);
 
 		}
+
 		//if the green button is pressed
 		if (greenBtn.getGlobalBounds().contains(mouse)) 
 		{
-			greenBtn.setFillColor(Color::Green);
+			mgrPtr->setCurColor(Color::Green);
 
 		}
+		
 		//if the circle button is pressed
 		if (circleBtn.getGlobalBounds().contains(mouse))
 		{
-			circleBtn.setFillColor(Color::White);
-
+			mgrPtr->setCurShape(ShapeEnum::CIRCLE);
 		}
 		//if the square button is pressed
-		if (blueBtn.getGlobalBounds().contains(mouse))
+		if (squareBtn.getGlobalBounds().contains(mouse))
 		{
-			squareBtn.setFillColor(Color::White);
+			mgrPtr->setCurShape(ShapeEnum::SQUARE);
 		}
 
 	}
