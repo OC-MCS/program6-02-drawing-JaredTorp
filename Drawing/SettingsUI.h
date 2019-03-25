@@ -10,12 +10,7 @@ using namespace sf;
 //consts for the circles and squares
 const int RADIUS = 20; //const radius for the circle buttons
 
-//global objects??? im not sure this is the write way to do it
-CircleShape blueBtn;
-CircleShape redBtn;
-CircleShape greenBtn;
-CircleShape circleBtn;
-RectangleShape squareBtn;
+
 
 
 
@@ -23,6 +18,12 @@ RectangleShape squareBtn;
 class SettingsUI
 {
 private:
+	//all of the buttons
+		CircleShape blueBtn;
+		CircleShape redBtn;
+		CircleShape greenBtn;
+		CircleShape circleBtn;
+		RectangleShape squareBtn;
 
 public:
 	SettingsUI(SettingsMgr *mgr)
