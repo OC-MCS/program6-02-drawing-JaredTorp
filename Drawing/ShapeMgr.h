@@ -16,24 +16,25 @@ private:
 public:
 	ShapeMgr() //we need this constructor? 
 	{
-		
+		//for debugging purposes, how to we go about this default constructor?
+		cout << "The Shapemgr constructor was called" << endl;
+
 	}
 
 	void addShape(Vector2f pos, ShapeEnum whichShape, Color color)
 	{
 		//adds a shape to the vector of pointers
-		//is the color and the whichshape sent to the constructor of Drawingshape as "nessessary information?"
-		//DrawingUI will draw this, this is just sending the info to the shapes
+		//Shape.h will draw this, this is just sending the info to the shapes
 
-		if (whichShape == ShapeEnum::CIRCLE)
+		if (whichShape == ShapeEnum::CIRCLE) //check to see if it is a circle
 		{
-			Circle temp(pos, color); //initializing the values of a circle
-			vec.push_back(&temp); //pushing back the vector, using the address of temp
+			Circle tempCircle(pos, color); //initializing the values of a circle
+			vec.push_back(&tempCircle); //pushing back the vector, using the address of temp
 		}
 		else //its a square
 		{
-			Square temp(pos, color); //initialize the values to a square
-			vec.push_back(&temp); //pushing back the vector, using the address of temp
+			Square tempSquare(pos, color); //initialize the values to a square
+			vec.push_back(&tempSquare); //pushing back the vector, using the address of temp
 		}
 
 

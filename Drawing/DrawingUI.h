@@ -13,10 +13,13 @@ private:
 	//needs a rectangle shape for the canvas
 	RectangleShape canvas;
 	RectangleShape settingsOutline;
+	ShapeMgr* shapePtr;
 
 public:
 	DrawingUI(Vector2f p)
 	{
+		
+		
 	}
 
 	void draw(RenderWindow& win, ShapeMgr *mgr)
@@ -43,9 +46,10 @@ public:
 
 		win.draw(settingsOutline);
 
-
+		//this loop im trying to draw the entire Vector of pointers to the shapes
 		for (int i = 0; i < mgr->getVector().size(); i++)
 		{
+			cout << "Test for loop" << endl;
 			mgr->getVector()[i]->draw(win); //Hey the vector is not working
 		}
 
