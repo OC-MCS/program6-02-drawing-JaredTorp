@@ -14,11 +14,9 @@ private:
 	vector <DrawingShape*> vec; //this is a vector of pointers that point to drawingshape
 
 public:
-	ShapeMgr() //we need this constructor? 
+	ShapeMgr()  
 	{
-		//for debugging purposes, how to we go about this default constructor?
-		cout << "The Shapemgr constructor was called" << endl;
-
+		//we dont know how big the vector will be at runtime, so this is left blank??????????????
 	}
 
 	void addShape(Vector2f pos, ShapeEnum whichShape, Color color)
@@ -28,13 +26,13 @@ public:
 
 		if (whichShape == ShapeEnum::CIRCLE) //check to see if it is a circle
 		{
-			Circle tempCircle(pos, color); //initializing the values of a circle
-			vec.push_back(&tempCircle); //pushing back the vector, using the address of temp
+			Circle* circlePtr = new Circle(pos, color); //initializing the values of a circle
+			vec.push_back(circlePtr); //pushing back the vector, using the address of temp
 		}
 		else //its a square
 		{
-			Square tempSquare(pos, color); //initialize the values to a square
-			vec.push_back(&tempSquare); //pushing back the vector, using the address of temp
+			Square* squarePtr = new Square(pos, color); //initialize the values to a square
+			vec.push_back(squarePtr); //pushing back the vector, using the address of temp
 		}
 
 
@@ -44,10 +42,24 @@ public:
 	
 	
 	//function that returns a const referecnce/ptr to its list of shapes, so that DrawingUI can access the list of shapes to draw them
-	vector <DrawingShape*> getVector() 
+	vector <DrawingShape*> getVector()  const
 	{
 		return vec; 
 	}
-	//function that returns a const referecnce/ptr to its list of shapes, so that DrawingUI can access the list of shapes to draw them
+
+	
+	//function to read the data from a bin file (if there is one)
+	void readFile(fstream& file)
+	{
+		
+
+	}
+
+	//function to write the data into the bin file
+	void writeFile(fstream& file)
+	{
+
+	}
+
 	
 };

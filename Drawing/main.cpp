@@ -32,6 +32,17 @@ int main()
 	// ********* Add code here to make the managers read from shapes file (if the file exists)
 	//read the binary file here
 
+	fstream myFile;
+	myFile.open("shapes.bin", ios::in | ios::binary);
+
+	//settingsMgr call to read the file
+	settingsMgr.readSettings(myFile);
+
+	//ShapeMgr call to read the file
+	shapeMgr.readFile(myFile);
+
+	myFile.close();
+
 
 	while (window.isOpen()) 
 	{
@@ -42,6 +53,20 @@ int main()
 			{
 				window.close();
 				// ****** Add code here to write all data to shapes file
+				
+				
+				myFile.open("shapes.bin", ios::out | ios::binary);
+
+				//settingMgr to write the data to a file
+				settingsMgr.writeSettings(myFile);
+
+
+				//ShapeMgr to write the data to a file
+				shapeMgr.writeFile(myFile);
+
+				myFile.close();
+
+
 			}
 			else if (event.type == Event::MouseButtonReleased)
 			{

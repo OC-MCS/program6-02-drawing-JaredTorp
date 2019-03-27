@@ -15,11 +15,6 @@ private:
 	ShapeEnum currentShape;
 
 public:
-	//default consturctor, do we need one is the main is passing a color?
-	SettingsMgr()
-	{
-		//come back later
-	}
 
 	SettingsMgr(Color startingColor, ShapeEnum startingShape)
 	{
@@ -50,20 +45,45 @@ public:
 	}
 
 
+
+	//reading the settings into the binary file (if it exists)
+	void readSettings(fstream& file)
+	{
+		//read the color number from a file
+
+		int colorNumber; //an int to hold the integer when we read the data
+
+		file.read(reinterpret_cast<char *>(&colorNumber), sizeof(int));
+		
+		Color aColor(colorNumber); //use the number to change it to a color
+
+		currentColor = aColor; //set that color as the current color
+
+		//now reading for the shape button
+		//we dont have to transform the shape because its a number (Enumerator)
+		file.read(reinterpret_cast<char*> (&currentShape), sizeof(currentShape));
+		
+		
+	}
 	
-	//loading the setting from a binary file, or do we do this in main?
-	void loadsettings()
+	
+	
+	
+	//writing the setting from a binary file, or do we do this in main?
+	void writeSettings(fstream& file)
 	{
+		//represent the color as an integer
+		unsigned colorNumber = currentColor.toInteger();
+		
+
+		file.write(reinterpret_cast<char *> (&colorNumber), sizeof(colorNumber));
+
+		file.write(reinterpret_cast<char *> (&currentShape), sizeof(currentShape));
 
 
 	}
 
 
-	//saving the settings into the binary file
-	void saveSettings()
-	{
-
-	}
 
 
 

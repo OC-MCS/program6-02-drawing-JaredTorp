@@ -46,11 +46,15 @@ public:
 
 		win.draw(settingsOutline);
 
+		//get the vector of pointers
+		vector <DrawingShape*> copy = mgr->getVector();
+
 		//this loop im trying to draw the entire Vector of pointers to the shapes
-		for (int i = 0; i < mgr->getVector().size(); i++)
+		for (int i = 0; i < copy.size(); i++)
 		{
-			cout << "Test for loop" << endl;
-			mgr->getVector()[i]->draw(win); //Hey the vector is not working
+			copy[i]->draw(win); //Hey the vector is not working
+	
+			
 		}
 
 	}

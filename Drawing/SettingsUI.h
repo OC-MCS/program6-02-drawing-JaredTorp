@@ -186,10 +186,6 @@ public:
 	void handleMouseUp(Vector2f mouse)
 	{
 		//handle the mouse clicks
-		//what im trying to do here is the determine which button was pushed, and then fill and draw the shape that was pushed
-		//i need to remember that only one button can be pushed at a time
-		
-
 		
 		
 		//if the blue button is pressed

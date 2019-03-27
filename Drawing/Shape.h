@@ -22,8 +22,7 @@ public:
 	
 	
 	//virtual RecordData
-
-	//draw and save function
+	//save function
 
 
 };
@@ -60,7 +59,7 @@ private:
 public:
 	Square(Vector2f pos, Color color)
 	{
-		Vector2f size(10, 10); //setting the brush size
+		Vector2f size(20, 20); //setting the brush size
 
 		square.setFillColor(color);
 		square.setPosition(pos);
@@ -71,7 +70,10 @@ public:
 	{
 		win.draw(square); //one liner that draws the circle
 	}
-	//RecordData
+	
+	
+	//RecordData function that returns a struct of data
+
 
 };
 
