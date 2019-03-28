@@ -16,24 +16,16 @@ private:
 	ShapeMgr* shapePtr;
 
 public:
-	DrawingUI(Vector2f p)
+	DrawingUI(Vector2f canvasPos)
 	{
-		
-		
-	}
-
-	void draw(RenderWindow& win, ShapeMgr *mgr)
-	{
-		//draw the canvas
-		
-		Vector2f canvasPos(230, 2);
+		//setting the canvas position with the value passed
 		canvas.setPosition(canvasPos);
 		canvas.setOutlineColor(Color::Blue);
 		canvas.setOutlineThickness(2);
 		canvas.setSize(Vector2f(568, 596));
 		canvas.setFillColor(Color::Transparent);
 
-		win.draw(canvas);
+		
 
 		//draw the outline of the settings menu
 
@@ -44,6 +36,16 @@ public:
 		settingsOutline.setSize(Vector2f(226, 596));
 		settingsOutline.setFillColor(Color::Transparent);
 
+		
+		
+	}
+
+	void draw(RenderWindow& win, ShapeMgr *mgr)
+	{
+		//draw the canvas
+		win.draw(canvas);
+		
+		//draw the settings ouline
 		win.draw(settingsOutline);
 
 		//get the vector of pointers
@@ -66,7 +68,7 @@ public:
 		bool inCanvas = false; //we only care if the mouse is inside the canvas
 
 		//check to see if the mouse is in the shape of the canvas
-		if (canvas.getGlobalBounds().contains(mousePos))
+		if (canvas.getGlobalBounds().contains(mousePos) && mousePos.x < 780 && mousePos.y < 580)
 		{
 			inCanvas = true;
 		}

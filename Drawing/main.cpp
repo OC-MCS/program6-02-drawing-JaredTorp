@@ -26,11 +26,12 @@ int main()
 	SettingsMgr settingsMgr(Color::Blue, ShapeEnum::CIRCLE); //passing the color and the shape as constructor
 	SettingsUI  settingsUI(&settingsMgr);  //passing the address of settingsMgr, this will set and draw the defaults
 	ShapeMgr    shapeMgr;	 // creates a ShapMgr object
-	DrawingUI   drawingUI(Vector2f(200, 50)); //calls the drawingUI constructor
+	DrawingUI   drawingUI(Vector2f(230, 2)); //calls the drawingUI constructor
 
 	
 	// ********* Add code here to make the managers read from shapes file (if the file exists)
 	//read the binary file here
+
 
 	fstream myFile;
 	myFile.open("shapes.bin", ios::in | ios::binary);

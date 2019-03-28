@@ -62,6 +62,8 @@ public:
 		//create a temp pointer to a square
 		Square* tempSquare;
 
+
+		//EOF loop
 		while (file.read(reinterpret_cast<char *> (&temp), sizeof(ShapeInfo)))
 		{
 			//check the shape
@@ -70,7 +72,7 @@ public:
 			{
 				tempCircle = new Circle(temp.position, temp.color); //dynamically allocate a new circle and construct circle
 				vec.push_back(tempCircle); //pushing back the vector, using the temp
-				cout << "here02" << endl;
+				
 			}
 			//it must be a square
 			else if (temp.whichshape == ShapeEnum::SQUARE)

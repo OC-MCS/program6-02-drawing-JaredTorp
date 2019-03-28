@@ -29,16 +29,53 @@ private:
 public:
 	SettingsUI(SettingsMgr *mgr)
 	{
+		//setting the mgrPtr to point to wherever mgr points to
 		mgrPtr = mgr;
 		
-		//draw the default positions
-		//check the default buttons
-		
-		//set all buttons to transparent in the constructor
+		//drawing the circles here
+		//the blue button 
+
+		Vector2f bluePos(80, 70);
+		blueBtn.setPosition(bluePos);
+		blueBtn.setRadius(RADIUS);
+		blueBtn.setOutlineThickness(2);
+		blueBtn.setOutlineColor(Color::Blue);
 		blueBtn.setFillColor(Color::Transparent);
+
+		//the red button
+
+		Vector2f redPos(80, 140);
+		redBtn.setPosition(redPos);
+		redBtn.setRadius(RADIUS);
+		redBtn.setOutlineThickness(2);
+		redBtn.setOutlineColor(Color::Red);
 		redBtn.setFillColor(Color::Transparent);
+
+		//the green button
+
+		Vector2f greenPos(80, 210);
+		greenBtn.setPosition(greenPos);
+		greenBtn.setRadius(RADIUS);
+		greenBtn.setOutlineThickness(2);
+		greenBtn.setOutlineColor(Color::Green);
 		greenBtn.setFillColor(Color::Transparent);
+
+		//the button to outline the circle drawing shape
+
+		Vector2f drawPos(80, 400);
+		circleBtn.setPosition(drawPos);
+		circleBtn.setRadius(RADIUS);
+		circleBtn.setOutlineThickness(2);
+		circleBtn.setOutlineColor(Color::White);
 		circleBtn.setFillColor(Color::Transparent);
+
+		//now the square button
+
+		Vector2f sqPos(80, 475);
+		squareBtn.setPosition(sqPos);
+		squareBtn.setOutlineColor(Color::White);
+		squareBtn.setOutlineThickness(2);
+		squareBtn.setSize(Vector2f(40, 40));
 		squareBtn.setFillColor(Color::Transparent);
 
 		
@@ -58,21 +95,14 @@ public:
 		}
 			
 
-		//title
+		//title for the selected color
 		Text topTitle("Selected Color", font, 25);
 		topTitle.setPosition(30, 25);
 		win.draw(topTitle);
+	
 		
-		//increment the y position by 25
-		//draw the circles here
 
-		//the blue button 
-		
-		Vector2f bluePos(80, 70);
-		blueBtn.setPosition(bluePos);
-		blueBtn.setRadius(RADIUS);
-		blueBtn.setOutlineThickness(2);
-		blueBtn.setOutlineColor(Color::Blue);
+		//check to see if the current color is blue
 		
 		if (mgrPtr->getCurColor() == Color::Blue)
 		{
@@ -83,23 +113,13 @@ public:
 			blueBtn.setFillColor(Color::Transparent);
 		}
 
-	
-		//just for the outlined button
-		
-
-
+		//draw the blue button
 		win.draw(blueBtn);
 
 
-		//the red button
-	
-		Vector2f redPos(80, 140);
-		redBtn.setPosition(redPos);
-		redBtn.setRadius(RADIUS);
-		redBtn.setOutlineThickness(2);
-		redBtn.setOutlineColor(Color::Red);
+		
 
-		//just for the outlined button
+		//check to see if the current color is red
 		if (mgrPtr->getCurColor() == Color::Red)
 		{
 			redBtn.setFillColor(Color::Red);
@@ -109,18 +129,13 @@ public:
 			redBtn.setFillColor(Color::Transparent);
 		}
 
+		//draw the Red button
 		win.draw(redBtn);
 
 
-		//the green button
 		
-		Vector2f greenPos(80, 210);
-		greenBtn.setPosition(greenPos);
-		greenBtn.setRadius(RADIUS);
-		greenBtn.setOutlineThickness(2);
-		greenBtn.setOutlineColor(Color::Green);
 
-		//just for the outlined button
+		//check to see if the current color is green
 		if (mgrPtr->getCurColor() == Color::Green)
 		{
 			greenBtn.setFillColor(Color::Green);
@@ -130,6 +145,7 @@ public:
 			greenBtn.setFillColor(Color::Transparent);
 		}
 
+		//draw the green button
 		win.draw(greenBtn);
 
 
@@ -137,19 +153,10 @@ public:
 		//text for the selected shape
 		Text bottomTitle("Selected Shape", font, 25);
 		bottomTitle.setPosition(30, 350);
-		win.draw(bottomTitle);
+		win.draw(bottomTitle); //draw the string
 
-		//draw circle and square here
 
-		//the button to outline the drawing shape
-	
-		Vector2f drawPos(80, 400);
-		circleBtn.setPosition(drawPos);
-		circleBtn.setRadius(RADIUS);
-		circleBtn.setOutlineThickness(2);
-		circleBtn.setOutlineColor(Color::White);
-
-		//just for the outlined button
+		//check to see if the current shape is circle
 		if (mgrPtr->getCurShape() == ShapeEnum::CIRCLE)
 		{
 			circleBtn.setFillColor(Color::White);
@@ -161,14 +168,7 @@ public:
 
 		win.draw(circleBtn);
 
-		//now the square button
-		
-		Vector2f sqPos(80, 475);
-		squareBtn.setPosition(sqPos);
-		squareBtn.setOutlineColor(Color::White);
-		squareBtn.setOutlineThickness(2);
-		squareBtn.setSize(Vector2f(40, 40));
-		
+		//check to see if the current shape is square
 		if (mgrPtr->getCurShape() == ShapeEnum::SQUARE)
 		{
 			squareBtn.setFillColor(Color::White);
@@ -191,14 +191,8 @@ public:
 		//if the blue button is pressed
 		if (blueBtn.getGlobalBounds().contains(mouse)) //mouse is a Vector2f
 		{
-	
-			
+
 			mgrPtr->setCurColor(Color::Blue); //setting current color in settingsmgr
-
-			//want to set the fill color, draw it
-			//draw the other button as transparent
-			
-
 
 		}
 
