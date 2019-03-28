@@ -72,7 +72,7 @@ public:
 		}
 			
 
-		return inCanvas; // just to make it compile
+		return inCanvas; 
 
 	}
 

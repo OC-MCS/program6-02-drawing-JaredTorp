@@ -8,15 +8,19 @@ using namespace sf;
 
 // finish the ShapeMgr class.
 
+
+
 class ShapeMgr
 {
 private:
 	vector <DrawingShape*> vec; //this is a vector of pointers that point to drawingshape
 
 public:
+	
+	//default constructor
 	ShapeMgr()  
 	{
-		//we dont know how big the vector will be at runtime, so this is left blank??????????????
+		
 	}
 
 	void addShape(Vector2f pos, ShapeEnum whichShape, Color color)
@@ -51,15 +55,60 @@ public:
 	//function to read the data from a bin file (if there is one)
 	void readFile(fstream& file)
 	{
-		
+		//create a temporary struct
+		ShapeInfo temp;
+		//create a temp pointer to a circle
+		Circle* tempCircle;
+		//create a temp pointer to a square
+		Square* tempSquare;
+
+		while (file.read(reinterpret_cast<char *> (&temp), sizeof(ShapeInfo)))
+		{
+			//check the shape
+			//if it is a circle
+			if (temp.whichshape == ShapeEnum::CIRCLE)
+			{
+				tempCircle = new Circle(temp.position, temp.color); //dynamically allocate a new circle and construct circle
+				vec.push_back(tempCircle); //pushing back the vector, using the temp
+				cout << "here02" << endl;
+			}
+			//it must be a square
+			else if (temp.whichshape == ShapeEnum::SQUARE)
+			{
+				tempSquare = new Square(temp.position, temp.color); // //dynamically allocate a new circle and construct circle
+				vec.push_back(tempSquare); //pushing back the vector, using temp
+
+			}
+
+
+
+
+		}
 
 	}
 
 	//function to write the data into the bin file
 	void writeFile(fstream& file)
 	{
+		//create temporary ShapeInfo
+		ShapeInfo temp;
+
+		for (unsigned i = 0; i < vec.size(); i++)
+		{
+			temp.color = vec[i]->getRecord().color;
+			temp.position = vec[i]->getRecord().position;
+			temp.whichshape = vec[i]->getRecord().whichshape;
+			
+			file.write(reinterpret_cast<char *>(&temp), sizeof(ShapeInfo));
+		}
+
+
+
+		
 
 	}
+
+	
 
 	
 };
