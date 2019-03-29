@@ -17,12 +17,24 @@ private:
 
 public:
 	
-	//default constructor
+	//======================================================
+	// function name: ShapeMgr
+	// parameters:none
+	// return type:none, its a default constructor that does nothing
+	//======================================================
 	ShapeMgr()  
 	{
-		
+		//we cant do anything because we dont know the size of the vector
 	}
 
+	//======================================================
+	// function name: addShape
+	// parameters:
+	// Vector2f pos- pass the position
+	//ShapeEnum whichShape- we need to pass which shape, whether its a circle or square
+	//Color color- we pass the color 
+	// return type: none, its a void
+	//======================================================
 	void addShape(Vector2f pos, ShapeEnum whichShape, Color color)
 	{
 		//adds a shape to the vector of pointers
@@ -45,14 +57,22 @@ public:
 	}
 	
 	
-	//function that returns a const referecnce/ptr to its list of shapes, so that DrawingUI can access the list of shapes to draw them
+	//======================================================
+	// function name: getVector()
+	// parameters:none
+	// return type:Vector <DrawingShape*>- we need to get the vector of pointers to drawingshape
+	//======================================================
 	vector <DrawingShape*> getVector()  const
 	{
 		return vec; 
 	}
 
 	
-	//function to read the data from a bin file (if there is one)
+	//======================================================
+	// function name: readFile
+	// parameters:fstream& file, we pass the file by reference
+	// return type:none, its a void
+	//======================================================
 	void readFile(fstream& file)
 	{
 		//create a temporary struct
@@ -89,7 +109,11 @@ public:
 
 	}
 
-	//function to write the data into the bin file
+	//======================================================
+	// function name: writeFile
+	// parameters:fstream& file, we pass the file by reference
+	// return type:none, its a void
+	//======================================================
 	void writeFile(fstream& file)
 	{
 		//create temporary ShapeInfo
@@ -97,15 +121,12 @@ public:
 
 		for (unsigned i = 0; i < vec.size(); i++)
 		{
-			temp.color = vec[i]->getRecord().color;
-			temp.position = vec[i]->getRecord().position;
-			temp.whichshape = vec[i]->getRecord().whichshape;
+			temp.color = vec[i]->getRecord().color; //put the color into the temp ShapeInfo
+			temp.position = vec[i]->getRecord().position;//put the position into the temp ShapeInfo
+			temp.whichshape = vec[i]->getRecord().whichshape;//put the shape into the temp ShapeInfo
 			
-			file.write(reinterpret_cast<char *>(&temp), sizeof(ShapeInfo));
+			file.write(reinterpret_cast<char *>(&temp), sizeof(ShapeInfo)); //write it to the file
 		}
-
-
-
 		
 
 	}

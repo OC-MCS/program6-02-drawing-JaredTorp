@@ -10,15 +10,10 @@ using namespace sf;
 //consts for the circles and squares
 const int RADIUS = 20; //const radius for the circle buttons
 
-
-
-
-
-
 class SettingsUI
 {
 private:
-	//all of the buttons
+		//all of the buttons
 		CircleShape blueBtn;
 		CircleShape redBtn;
 		CircleShape greenBtn;
@@ -27,6 +22,11 @@ private:
 		SettingsMgr* mgrPtr; //settings manager pointer
 
 public:
+	//======================================================
+	// function name: SettingsUI
+	// parameters: SettingsMgr *mgr- we pass a pointer to a settingMgr 
+	// return type: none, constructor
+	//======================================================
 	SettingsUI(SettingsMgr *mgr)
 	{
 		//setting the mgrPtr to point to wherever mgr points to
@@ -82,7 +82,11 @@ public:
 	}
 
 	
-	//function for drawing the menu
+	//======================================================
+	// function name: draw
+	// parameters: RenderWindow& win - we pass the renderwindow object by reference
+	// return type: none, its a void
+	//======================================================
 	void draw(RenderWindow& win)
 	{
 
@@ -183,6 +187,11 @@ public:
 
 	}
 	
+	//======================================================
+	// function name: handleMouseUp
+	// parameters: Wectorsf mouse- we pass the position of the mouse
+	// return type: none, its a void
+	//======================================================
 	void handleMouseUp(Vector2f mouse)
 	{
 		//handle the mouse clicks
@@ -199,31 +208,35 @@ public:
 		//if the red button is pressed
 		if (redBtn.getGlobalBounds().contains(mouse)) 
 		{
-			mgrPtr->setCurColor(Color::Red);
+			mgrPtr->setCurColor(Color::Red);//setting current color in settingsmgr
 
 		}
 
 		//if the green button is pressed
 		if (greenBtn.getGlobalBounds().contains(mouse)) 
 		{
-			mgrPtr->setCurColor(Color::Green);
+			mgrPtr->setCurColor(Color::Green);//setting current color in settingsmgr
 
 		}
 		
 		//if the circle button is pressed
 		if (circleBtn.getGlobalBounds().contains(mouse))
 		{
-			mgrPtr->setCurShape(ShapeEnum::CIRCLE);
+			mgrPtr->setCurShape(ShapeEnum::CIRCLE);//setting current shape in settingsmgr
 		}
 		//if the square button is pressed
 		if (squareBtn.getGlobalBounds().contains(mouse))
 		{
-			mgrPtr->setCurShape(ShapeEnum::SQUARE);
+			mgrPtr->setCurShape(ShapeEnum::SQUARE);//setting current shape in settingsmgr
 		}
 
 	}
 
-	//die if we need to bail out because of the font error
+	//======================================================
+	// function name: die
+	// parameters: string msg- we pass the message if failed
+	// return type: none, its a void
+	//======================================================
 
 	void die(string msg)
 	{

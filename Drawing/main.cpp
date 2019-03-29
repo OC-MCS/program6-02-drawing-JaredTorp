@@ -1,6 +1,10 @@
 //================================================
 // Jared Torp
+//Due March 29, 2019
+// Drawing
 //================================================
+
+
 #include <iostream>
 #include <fstream>
 using namespace std;
@@ -33,8 +37,8 @@ int main()
 	//read the binary file here
 
 
-	fstream myFile;
-	myFile.open("shapes.bin", ios::in | ios::binary);
+	fstream myFile; //create the file
+	myFile.open("shapes.bin", ios::in | ios::binary); //open the file for input
 
 	//settingsMgr call to read the file
 	settingsMgr.readSettings(myFile);
@@ -42,7 +46,7 @@ int main()
 	//ShapeMgr call to read the file
 	shapeMgr.readFile(myFile);
 
-	myFile.close();
+	myFile.close(); //close the file
 
 
 	while (window.isOpen()) 
@@ -56,7 +60,7 @@ int main()
 				// ****** Add code here to write all data to shapes file
 				
 				
-				myFile.open("shapes.bin", ios::out | ios::binary);
+				myFile.open("shapes.bin", ios::out | ios::binary); //open the file for output
 
 				//settingMgr to write the data to a file
 				settingsMgr.writeSettings(myFile);
@@ -65,7 +69,7 @@ int main()
 				//ShapeMgr to write the data to a file
 				shapeMgr.writeFile(myFile);
 
-				myFile.close();
+				myFile.close(); //close the file
 
 
 			}

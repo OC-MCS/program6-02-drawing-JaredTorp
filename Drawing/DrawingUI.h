@@ -10,15 +10,22 @@ using namespace sf;
 class DrawingUI
 {
 private:
-	//needs a rectangle shape for the canvas
-	RectangleShape canvas;
-	RectangleShape settingsOutline;
-	ShapeMgr* shapePtr;
+	
+	RectangleShape canvas; //a rectangle shape canvas
+	RectangleShape settingsOutline; // a recatngleshape that will outline the settings
+	ShapeMgr* shapePtr; //a pointer to a shapeMgr that will be assigned to the pointer that is passed 
 
 public:
+
+//======================================================
+// function name: DrawingUI
+// parameters: We pass it the canvas Pos that was passed in main
+// return type: none, it is a constructor
+//======================================================
 	DrawingUI(Vector2f canvasPos)
 	{
 		//setting the canvas position with the value passed
+		//setting the attributes of the canvas
 		canvas.setPosition(canvasPos);
 		canvas.setOutlineColor(Color::Blue);
 		canvas.setOutlineThickness(2);
@@ -28,7 +35,7 @@ public:
 		
 
 		//draw the outline of the settings menu
-
+		//setting the attributes of the setting outline
 		Vector2f settPos(2, 2);
 		settingsOutline.setPosition(settPos);
 		settingsOutline.setOutlineColor(Color::Blue);
@@ -39,7 +46,13 @@ public:
 		
 		
 	}
-
+//======================================================
+// function name: Draw
+// parameters: 
+//RenderWindow& win- we pass the renderwindow object to draw
+//ShapeMgr *mgr- 
+// return type: none, its a void
+//======================================================
 	void draw(RenderWindow& win, ShapeMgr *mgr)
 	{
 		//draw the canvas
@@ -54,13 +67,17 @@ public:
 		//this loop im trying to draw the entire Vector of pointers to the shapes
 		for (int i = 0; i < copy.size(); i++)
 		{
-			copy[i]->draw(win); //Hey the vector is not working
+			copy[i]->draw(win);
 	
 			
 		}
 
 	}
-	
+	//======================================================
+	// function name: isMouseInCanvas
+	// parameters: Vector2f mousePos, we pass the position of the mouse
+	// return type: bool, we check if it is in the canvas
+	//======================================================
 	bool isMouseInCanvas(Vector2f mousePos)
 	{
 		//checks to see if the mouse in inside the canvas
@@ -68,12 +85,12 @@ public:
 		bool inCanvas = false; //we only care if the mouse is inside the canvas
 
 		//check to see if the mouse is in the shape of the canvas
-		if (canvas.getGlobalBounds().contains(mousePos) && mousePos.x < 780 && mousePos.y < 580)
+		if (canvas.getGlobalBounds().contains(mousePos) && mousePos.x < 780 && mousePos.y < 580) //so the shape doesnt go off screen
 		{
 			inCanvas = true;
 		}
 			
-
+		//return true or false
 		return inCanvas; 
 
 	}
